@@ -13,6 +13,7 @@ public class Game {
     private Board board;
     private int currPlayeridx;
     private GameStatus status;
+    private Player winner;
 
     public Game(List<Player> players , Board board) {
         this.moves = new ArrayList<>();
@@ -21,6 +22,7 @@ public class Game {
         this.currPlayeridx = 0;
         this.status = GameStatus.IN_PROGRESS;
     }
+
 
     public void setBoard(Board board) {
         this.board = board;
@@ -60,6 +62,20 @@ public class Game {
 
     public List<Move> getMoves() {
         return moves;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public boolean checkDraw()
+    {
+        int d = board.getGrid().size();
+        return moves.size() == (d * d);
     }
 
     public static GameBuilder getGameBuilder()

@@ -1,5 +1,6 @@
 import Exceptions.InvalidDimesionException;
 import Exceptions.PlayerCountException;
+import Factory.WinningStrategy.gameWinningStrategy;
 import GameController.GameController;
 import Models.*;
 
@@ -48,14 +49,35 @@ public class Client {
             humanPlayers--;
         }
 
+
+
         GameController gm = new GameController();
+        gameWinningStrategy gws = gm.getWinningStrategy(d);
         Game currGame = gm.startGame(players , d);
+
+
 
         while(currGame.getStatus() == GameStatus.IN_PROGRESS)
         {
             gm.displayCurrBoard(currGame);
-            gm.makeMove(currGame);
+            gm.makeMove(currGame , gws);
 
+            if(currGame.getStatus() == GameStatus.WIN)
+            {
+                System.out.println(currGame.getWinner().getName() + " has won the Game");
+                gm.displayCurrBoard(currGame);
+                break;
+            }
+
+            else if(gm.checkDraw(currGame))
+            {
+                currGame.setStatus(GameStatus.DRAW);
+                System.out.println( "Board is Completely Filled , Please restart the game");
+                gm.displayCurrBoard(currGame);
+                break;
+            }
+
+            currGame.setCurrPlayeridx((currGame.getCurrPlayeridx() + 1) % (d-1));
 
         }
     }

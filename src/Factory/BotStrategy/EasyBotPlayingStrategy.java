@@ -1,10 +1,10 @@
-package Factory;
+package Factory.BotStrategy;
 
 import Models.*;
 
 import java.util.List;
 
-public class EasyBotPlayingStrategy implements BotPlayingStrategy{
+public class EasyBotPlayingStrategy implements BotPlayingStrategy {
 
 
     public  Position playingAlgo(Game game) {

@@ -1,4 +1,4 @@
-package Factory;
+package Factory.BotStrategy;
 
 import Models.Game;
 import Models.Position;

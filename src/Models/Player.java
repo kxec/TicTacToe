@@ -68,6 +68,7 @@ public class Player {
 
         if(!this.validMove(game , decidedPos))
             {
+                System.out.println("Hello , You have entered invalid Rows and Cols");
                 return decideMove(game);
             }
 

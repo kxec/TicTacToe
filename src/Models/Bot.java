@@ -1,7 +1,7 @@
 package Models;
 
-import Factory.BotPlayingStrategy;
-import Factory.EasyBotPlayingStrategy;
+import Factory.BotStrategy.BotPlayingStrategy;
+import Factory.BotStrategy.EasyBotPlayingStrategy;
 
 
 
