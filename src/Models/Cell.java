@@ -3,6 +3,7 @@ package Models;
 public class Cell {
     private Player player;
     private Position position;
+    private CellState cellstate;
 
     public Cell(Player player, Position position) {
         this.player = player;
@@ -10,7 +11,7 @@ public class Cell {
         this.cellstate = CellState.EMPTY;
     }
 
-    private CellState cellstate;
+
 
     public void setPlayer(Player player) {
         this.player = player;

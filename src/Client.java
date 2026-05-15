@@ -1,6 +1,7 @@
+import Exceptions.InvalidDimesionException;
+import Exceptions.PlayerCountException;
 import GameController.GameController;
-import Models.Game;
-import Models.Player;
+import Models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.Scanner;
 
 public class Client {
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws InvalidDimesionException, PlayerCountException
     {
         Scanner scn = new Scanner(System.in);
 
@@ -32,7 +33,7 @@ public class Client {
             System.out.println("Please help him in Selecting the symbol");
             String symbol = scn.nextLine();
 
-            players.add(new Player(name , symbol));
+            players.add(new Bot(name , symbol , difficultyLevel.EASY));
             humanPlayers--;
         }
 
@@ -48,9 +49,14 @@ public class Client {
         }
 
         GameController gm = new GameController();
+        Game currGame = gm.startGame(players , d);
 
-        gm.startGame(players , d);
+        while(currGame.getStatus() == GameStatus.IN_PROGRESS)
+        {
+            gm.displayCurrBoard(currGame);
+            gm.makeMove(currGame);
 
 
+        }
     }
 }

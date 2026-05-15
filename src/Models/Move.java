@@ -4,6 +4,11 @@ public class Move {
     private Player moveplayer;
     private Cell movecell;
 
+    public Move(Player moveplayer, Cell movecell) {
+        this.moveplayer = moveplayer;
+        this.movecell = movecell;
+    }
+
     public void setMovecell(Cell movecell) {
         this.movecell = movecell;
     }
@@ -19,4 +24,5 @@ public class Move {
     public Cell getMovecell() {
         return movecell;
     }
+
 }
